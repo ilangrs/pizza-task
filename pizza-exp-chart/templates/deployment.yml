@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ .Values.appName }}
+  template:
+    metadata:
+      labels:
+        name: {{ .Values.appName }}
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: pizza-exp
+          image: {{ .Values.deployment.image }}
+          ports:
+            - containerPort: {{ .Values.deployment.port }}
+          env:
+            - name: REDIS_URL
+              value: redis-master

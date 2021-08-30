@@ -1,0 +1,11 @@
+appName: pizza-app
+
+ingress:
+  hostName: "host.ilan.com"
+
+service:
+  port: 8081
+
+deployment:
+  image: "ilangrs07/pizza-exp:latest"
+  port: 3000
